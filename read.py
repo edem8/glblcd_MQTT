@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
-
+import config
+import PySimpleGUI as sg
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -15,6 +16,6 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("197.255.72.44", 1883, 60)
+client.connect(config.ip, 1883, 60)
 
 client.loop_forever()

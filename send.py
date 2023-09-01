@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 import time
+import config
 
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
@@ -15,7 +16,7 @@ Connected = False  # global variable for the state of the connection
 
 client = mqtt.Client()
 client.on_connect = on_connect
-client.connect("197.255.72.34", 1883, 60)
+client.connect(config.ip, 1883, 60)
 client.loop_start()  # start the loop
 
 while Connected != True:  # Wait for connection
